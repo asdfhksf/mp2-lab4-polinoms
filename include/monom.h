@@ -1,1 +1,13 @@
-// класс или структура Монома (double коэффициент, целая свернутая степень)
+#include <iostream>
+
+typedef double DataType;
+
+struct Monom
+{
+	DataType data;
+	int degree;
+	Monom* next;
+
+	Monom(DataType d = 0, Monom* n = NULL, int de = 0);
+	Monom(const Monom& Monom2);
+};
