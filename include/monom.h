@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <io.h>
+#include <fcntl.h>
 typedef double DataType;
 
 struct Monom

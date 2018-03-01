@@ -1,4 +1,21 @@
-#include "polinom.h"
+﻿#include "polinom.h"
+
+wchar_t To_Uni_Degree(int de)
+{
+	switch (de)
+	{
+	case 0: return 0x2070;
+	case 1: return 0x00B9;
+	case 2: return 0x00B2;
+	case 3: return 0x00B3;
+	case 4: return 0x2074;
+	case 5: return 0x2075;
+	case 6: return 0x2076;
+	case 7: return 0x2077;
+	case 8: return 0x2078;
+	case 9: return 0x2079;
+	}
+}
 
 Polinom::Polinom()
 {
@@ -129,18 +146,222 @@ Monom* Polinom::GetHead() const
 	return head;
 }
 
-ostream& operator<<(ostream& os, const Polinom& p)
+wostream& operator<<(wostream& wos, const Polinom& p)
 {
 	Monom *tmp = p.head->next;
+	int x, y, z;
+	char sign;
 
-	while (tmp != NULL)
+	_setmode(_fileno(stdout), _O_U16TEXT);
+
+	if (tmp)
 	{
-		os << "|" << tmp->data << "|" << tmp->degree << "|" << "--->";
-		tmp = tmp->next;
-	}
-	os << "NULL";
+		x = tmp->degree / 100;
+		y = tmp->degree / 10 - 10 * x;
+		z = tmp->degree - 100 * x - 10 * y;
 
-	return os;
+		if (tmp->data > 0)
+			sign = '+';
+		else
+			sign = '-';
+
+		if (abs(tmp->data) != 1)
+		{
+			if (x > 1)
+			{
+				wos << tmp->data << "x" << To_Uni_Degree(x);
+			}
+			else
+			{
+				if (x == 1)
+					wos << tmp->data << "x";
+				else
+				{
+					if (x == 0)
+						wos << tmp->data;
+				}
+			}
+		}
+		else
+		{
+			if (tmp->data == 1)
+			{
+				if (x > 1)
+				{
+					wos << "x" << To_Uni_Degree(x);
+				}
+				else
+				{
+					if (x == 1)
+						wos << "x";
+					else
+					{
+						if (x == 0)
+							wos << "";
+					}
+				}
+
+			}
+
+			if (tmp->data != 1)
+			{
+				if (x > 1)
+				{
+					wos << "-" << "x" << To_Uni_Degree(x);
+				}
+				else
+				{
+					if (x == 1)
+						wos << "-" << "x";
+					else
+					{
+						if (x == 0)
+							wos << "-";
+					}
+				}
+
+			}
+		}
+
+		if (y > 1)
+		{
+			wos << "y" << To_Uni_Degree(y);
+		}
+		else
+		{
+			if (y == 1)
+				wos << "y";
+			else
+			{
+				if (y == 0)
+					wos << "";
+			}
+		}
+
+		if (z > 1)
+		{
+			wos << "z" << To_Uni_Degree(z);
+		}
+		else
+		{
+			if (z == 1)
+				wos << "z";
+			else
+			{
+				if (z == 0)
+					wos << "";
+			}
+		}
+
+		tmp = tmp->next;
+
+		while (tmp != NULL)
+		{
+			x = tmp->degree / 100;
+			y = tmp->degree / 10 - 10 * x;
+			z = tmp->degree - 100 * x - 10 * y;
+
+			if (tmp->data > 0)
+				sign = '+';
+			else
+				sign = '-';
+
+			if (abs(tmp->data) != 1)
+			{
+				if (x > 1)
+				{
+					wos << sign << abs(tmp->data) << "x" << To_Uni_Degree(x);
+				}
+				else
+				{
+					if (x == 1)
+						wos << sign << abs(tmp->data) << "x";
+					else
+					{
+						if (x == 0)
+							wos << sign << abs(tmp->data);
+					}
+				}
+			}
+			else
+			{
+				if (tmp->data == 1)
+				{
+					if (x > 1)
+					{
+						wos << "x" << To_Uni_Degree(x);
+					}
+					else
+					{
+						if (x == 1)
+							wos << "x";
+						else
+						{
+							if (x == 0)
+								wos << "";
+						}
+					}
+
+				}
+
+				if (tmp->data != 1)
+				{
+					if (x > 1)
+					{
+						wos << "-" << "x" << To_Uni_Degree(x);
+					}
+					else
+					{
+						if (x == 1)
+							wos << "-" << "x";
+						else
+						{
+							if (x == 0)
+								wos << "-";
+						}
+					}
+
+				}
+			}
+
+			if (y > 1)
+			{
+				wos << "y" << To_Uni_Degree(y);
+			}
+			else
+			{
+				if (y == 1)
+					wos << "y";
+				else
+				{
+					if (y == 0)
+						wos << "";
+				}
+			}
+
+			if (z > 1)
+			{
+				wos << "z" << To_Uni_Degree(z);
+			}
+			else
+			{
+				if (z == 1)
+					wos << "z";
+				else
+				{
+					if (z == 0)
+						wos << "";
+				}
+			}
+
+			tmp = tmp->next;
+		}
+	}
+	else
+		wos << "Zero polinom";
+
+	_setmode(_fileno(stdout), _O_TEXT);
+	return wos;
 }
 
 Monom* Polinom::Search_De(int de)

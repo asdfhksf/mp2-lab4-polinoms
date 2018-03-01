@@ -1,4 +1,3 @@
-#include <iostream>
 #include "monom.h"
 using namespace std;
 
@@ -20,7 +19,7 @@ public:
 	int GetSize();
 	Monom* GetHead() const;
 
-	friend ostream& operator<<(ostream& os, const Polinom& l);
+	friend wostream& operator<<(wostream& wos, const Polinom& l);
 
 	Monom* Search_De(int de);
 

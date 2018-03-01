@@ -18,6 +18,10 @@ void main()
 	int x, y, z, de;
 	Monom *tmp_curr, *tmp_prev;
 
+	cout << "Degree limit from 0 to 9" << endl;
+	cout << "Don`t enter zero value" << endl << endl;
+
+	cout << "Enter first polinom" << endl;
 	do
 	{
 		cout << "Enter value" << endl;
@@ -49,8 +53,10 @@ void main()
 
 	} while (r == 1);
 
-	cout << p1 << endl;
 
+	wcout << p1 << endl << endl;
+
+	cout << "Enter second polinom" << endl;
 	do
 	{
 		cout << "Enter value" << endl;
@@ -82,24 +88,24 @@ void main()
 
 	} while (r == 1);
 
-	cout << p2 << endl << endl << endl;
+	wcout << p2 << endl << endl << endl;
 
-	//p2.InsertToTaip(9, 900), p2.InsertToTaip(7, 700);
-	//p1.InsertToTaip(8, 800), p1.InsertToTaip(6, 600);
-	//p1.InsertToTaip(3, 525), p1.InsertToTaip(-5, 433), p1.InsertToTaip(7, 351);
-	//p2.InsertToTaip(4, 326), p2.InsertToTaip(-6, 218);
-	//p1.InsertToTaip(3, 525), p1.InsertToTaip(-5, 433), p1.InsertToTaip(7, 351);
-	//p2.InsertToTaip(4, 726), p2.InsertToTaip(-6, 618);
-	//p1.InsertToTaip(3, 525), p1.InsertToTaip(-5, 433), p1.InsertToTaip(7, 351);
-	//p2.InsertToTaip(4, 525), p2.InsertToTaip(5, 433);
-	//p1.InsertToTaip(7, 751), p1.InsertToTaip(3, 525), p1.InsertToTaip(-5, 433);
-	//p2.InsertToTaip(4, 626), p2.InsertToTaip(-6, 218);
-	//p1.InsertToTaip(7, 751), p1.InsertToTaip(3, 525), p1.InsertToTaip(-5, 433);
-	//p2.InsertToTaip(-7, 751), p2.InsertToTaip(-3, 525), p2.InsertToTaip(5, 433);
+	//p2.InsertToTail(9, 900), p2.InsertToTail(7, 700);
+	//p1.InsertToTail(8, 800), p1.InsertToTail(6, 600);
+	//p1.InsertToTail(3, 525), p1.InsertToTail(-5, 433), p1.InsertToTail(7, 351);
+	//p2.InsertToTail(4, 326), p2.InsertToTail(-6, 218);
+	//p1.InsertToTail(3, 525), p1.InsertToTail(-5, 433), p1.InsertToTail(7, 351);
+	//p2.InsertToTail(4, 726), p2.InsertToTail(-6, 618);
+	//p1.InsertToTail(3, 525), p1.InsertToTail(-5, 433), p1.InsertToTail(7, 351);
+	//p2.InsertToTail(4, 525), p2.InsertToTail(5, 433);
+	//p1.InsertToTail(7, 751), p1.InsertToTail(3, 525), p1.InsertToTail(-5, 433);
+	//p2.InsertToTail(4, 626), p2.InsertToTail(-6, 218);
+	//p1.InsertToTail(7, 751), p1.InsertToTail(3, 525), p1.InsertToTail(-5, 433);
+	//p2.InsertToTail(-7, 751), p2.InsertToTail(-3, 525), p2.InsertToTail(5, 433);
 
 	p3.Plus_New(p1, p2);
 	p1.Plus(p2);
 
-	cout << "Addition with the creation of a new polynomial" << endl << p3 << endl << endl;
-	cout << "Addition without creating a new polynomial" << endl << p1 << endl << endl;
+	wcout << "Addition with the creation of a new polynomial" << endl << p3 << endl << endl;
+	wcout << "Addition without creating a new polynomial" << endl << p1 << endl << endl;
 }
